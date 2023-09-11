@@ -47,10 +47,11 @@ export const totalPriceSelector = createSelector(cartItems, (cartItems) => {
     return cartItems.reduce((total, item) => total + item.quantity * item.product.price, 0);
 });
 
-export const productQuantitySelector = (productId: number) => createSelector(cartItems, (cartItems) => {    
-    const item = cartItems.find(item => item.product.id === productId);
-    return item ? item.quantity : 0;
-});
+export const productQtyInCartSelector = createSelector(
+    [cartItems, (cartItems, productId: number) => productId],
+    (cartItems, productId) =>
+      cartItems.find((el) => el.product.id === productId)?.quantity
+  );
 
 export const { addToCart, removeFromCart } = cartSlice.actions;
 export default cartSlice.reducer;

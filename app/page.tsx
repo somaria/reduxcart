@@ -4,13 +4,10 @@ import ProductCard from './components/ProductCard';
 
 export default function Home() {
   return (
-    <div>
-      <div>Home Page</div>
-      <div className='p-4 flex flex-wrap gap-4'>
-        {dummyProducts.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
+    <div className='p-4 flex flex-wrap gap-4'>
+      {dummyProducts.map((product) => (
+        <ProductCard key={product.id} product={product} />
+      ))}
     </div>
   );
 }
